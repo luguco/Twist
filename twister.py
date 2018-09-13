@@ -2,11 +2,12 @@ import random
 
 
 def shuffeler(word):
-    #wort kann nicht getwistet werden
+    # wort kann nicht getwistet werden
     if len(word) == 1 or len(word) == 2 or len(word) == 3:
         return word
 
-    # Wort könnte an 2. und 3. Stelle den gleichen Buchstaben haben -> 2. und 3. Pos. wird ohne Überprüfung vertauscht
+    # Wort mit 4 Buchstaben könnte an 2. und 3. Stelle den gleichen Buchstaben haben -> 2. und 3. Pos. wird ohne
+    # Überprüfung vertauscht
     if len(word) == 4:
         wrd = list(word)
         pos1 = wrd[1]
