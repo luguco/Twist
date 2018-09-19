@@ -1,1 +1,2 @@
-
+Abbruchbedingung in shuffelschleife -> falls wort nicht shuffelbar
+enttwist: überprüfen, ob wstring wirklich leer
