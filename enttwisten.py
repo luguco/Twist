@@ -29,7 +29,7 @@ def enttwister(word):
                 # Wort kann nicht passen
                 fit = False
                 break
-        if fit:
+        if fit and len(el) == 0:
             # Passendes Wort gefunden
             return e
     # Kein mögliches Wort hat gepasst

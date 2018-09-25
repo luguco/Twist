@@ -3,24 +3,25 @@ import random
 
 def shuffeler(word):
     # wort kann nicht getwistet werden
-    if len(word) == 1 or len(word) == 2 or len(word) == 3:
+    if len(word) <= 3:
         return word
-
-    # Wort mit 4 Buchstaben könnte an 2. und 3. Stelle den gleichen Buchstaben haben -> 2. und 3. Pos. wird ohne
-    # Überprüfung vertauscht
-    if len(word) == 4:
-        wrd = list(word)
-        pos1 = wrd[1]
-        wrd[1] = wrd[2]
-        wrd[2] = pos1
-
-        return ''.join(wrd)
-
+    
+    worker = list(word[1:len(word) - 1])
+    last_c = worker[0]
+    worker.pop(0)
+    res = False
+    for c in worker:
+	    if last_c != c:
+		    res = True
+	    last_c = c
+    if not res:
+        return word
+	    
     out = word
     # Wort muss getwistet sein
     while out == word:
-        # Mitte wird gemischt
         mid = list(word[1:len(word) - 1])
+        # Mitte wird gemischt
         random.shuffle(mid)
         # Wort wird wieder zusammengesetzt
         out = word[0] + ''.join(mid) + word[len(word) - 1]
