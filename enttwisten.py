@@ -1,11 +1,18 @@
+# ----------------------------------------------------------------
+# Fuktionen
+# ----------------------------------------------------------------
+
+
 def enttwister(word):
     # Wort kann nicht getwistet sein
     if len(word) < 4:
         return word
+
     # mögliche Wörter suchen
     char_ind = char_indice[word[0]]
-    poswords_raw = wordlist[char_ind:]
-    poswords = []
+    poswords_raw = wordlist[char_ind:]  # Wörter mit gleichem Anfangsbuchstaben
+    poswords = []  # Wörter mit geichem Anfangs- und Endzeichen
+
     for w in poswords_raw:
         if word[0] != w[0]:
             break
@@ -36,7 +43,12 @@ def enttwister(word):
     return word
 
 
-# Benötigte Dateien öffnen und Variablen nutzbar vorbereiten
+# ----------------------------------------------------------------
+# Hauptcode
+# ----------------------------------------------------------------
+
+
+# Benötigte Dateien öffnen und Variablen erstellen
 wordlist_raw = open("files/woerterliste.txt", encoding='UTF-8').read()
 file = open("files/enttwist.txt", encoding='UTF-8').read()
 
@@ -59,7 +71,8 @@ for word in wordlist:
 
 outlist = []
 latest_word = ''
-# Aufeinanderfolgende Buchstaben zu Wort zusammenfügen und enttwisten
+
+# Aufeinanderfolgende Buchstaben werden zu Wort zusammenfügen und enttwistet
 for c in charlist:
     if c.isalpha():
         latest_word += c
@@ -68,4 +81,5 @@ for c in charlist:
             outlist.append(enttwister(latest_word))
             latest_word = ''
         outlist.append(c)
+
 print(''.join(outlist))
